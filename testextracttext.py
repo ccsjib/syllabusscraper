@@ -23,7 +23,7 @@ from oauth2client import tools
 
 SCOPES = 'https://www.googleapis.com/auth/documents.readonly'
 DISCOVERY_DOC = 'https://docs.googleapis.com/$discovery/rest?version=v1'
-DOCUMENT_ID = 'YOUR_DOCUMENT_ID'
+DOCUMENT_ID = '1w_8lomBg3ffwCD0Ooy0p2wJ4XY-9yDPvBuc0m27rPQY'
 
 
 def get_credentials():
@@ -36,23 +36,12 @@ def get_credentials():
         Credentials, the obtained credential.
     """
     store = file.Storage('token.json')
-    credentials = store.get()
+    credentials = None #store.get()
 
     if not credentials or credentials.invalid:
         flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
         credentials = tools.run_flow(flow, store)
     return credentials
-
-def read_paragraph_element(element):
-    """Returns the text in the given ParagraphElement.
-
-        Args:
-            element: a ParagraphElement from a Google Doc.
-    """
-    text_run = element.get('textRun')
-    if not text_run:
-        return ''
-    return text_run.get('content')
 
 
 def read_structural_elements(elements):
