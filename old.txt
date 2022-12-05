@@ -1,0 +1,13 @@
+
+FROM TESTEXTRACTTEXT.PY
+
+def read_paragraph_element(element):
+    """Returns the text in the given ParagraphElement.
+
+        Args:
+            element: a ParagraphElement from a Google Doc.
+    """
+    text_run = element.get('textRun')
+    if not text_run:
+        return ''
+    return text_run.get('content')
