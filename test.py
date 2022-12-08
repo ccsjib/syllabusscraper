@@ -22,6 +22,9 @@ from oauth2client import file
 from oauth2client import tools
 import os
 import json
+import re
+
+
 
 SCOPES = 'https://www.googleapis.com/auth/documents.readonly'
 DISCOVERY_DOC = 'https://docs.googleapis.com/$discovery/rest?version=v1'
@@ -65,6 +68,7 @@ def read_structural_elements(elements):
             elements: a list of Structural Elements.
     """
     text = ''
+    lst = []
     for value in elements:
         if 'paragraph' in value:
             elements = value.get('paragraph').get('elements')
@@ -78,13 +82,18 @@ def read_structural_elements(elements):
                 cells = row.get('tableCells')
                 for cell in cells:
                     text += read_structural_elements(cell.get('content'))
-                    text += '\n' 
+                    lst.append(read_structural_elements(cell.get('content')))
+                    with open("psychsyllabus.json", "r") as f:
+                        data = json.load(f)
+
+                        data['syllabus'] = lst
+                    with open('psychsyllabus.json', 'w') as f:
+                        json.dump(data, f, indent=2)
         elif 'tableOfContents' in value:
             # The text in the TOC is also in a Structural Element.
             toc = value.get('tableOfContents')
             text += read_structural_elements(toc.get('content'))
     return text
-
 
 
 
@@ -96,19 +105,16 @@ def main():
         'docs', 'v1', http=http, discoveryServiceUrl=DISCOVERY_DOC)
     doc = docs_service.documents().get(documentId=DOCUMENT_ID).execute()
     doc_content = doc.get('body').get('content')
-   # print(read_structural_elements(doc_content))
     
+    doc_json = read_structural_elements(doc_content)
+ 
+        
     
-with open("psychsyllabus.json", "r") as f:
-    data = json.load(f)
-
-jsontext = read_structural_elements(doc_content)
-print(jsontext)
-
-data['syllabus'] = jsontext
-with open('psychsyllabus.json', 'w') as f:
-        json.dump(data, f, indent=2)
 
 if __name__ == '__main__':
     main()
-#end of day 3
+
+with open("psychsyllabus.json", "r") as f:
+    data = json.load(f)
+
+print(data)
