@@ -85,8 +85,8 @@ def read_structural_elements(elements):
                     lst.append(read_structural_elements(cell.get('content')))
                     with open("psychsyllabus.json", "r") as f:
                         data = json.load(f)
-
-                        data['syllabus'] = lst
+#['syllabus']
+                        data = lst
                     with open('psychsyllabus.json', 'w') as f:
                         json.dump(data, f, indent=2)
         elif 'tableOfContents' in value:

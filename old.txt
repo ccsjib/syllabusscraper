@@ -11,3 +11,32 @@ def read_paragraph_element(element):
     if not text_run:
         return ''
     return text_run.get('content')
+
+
+
+
+    try:
+    print(data.index(dategoogle))
+except ValueError:
+    print("That item does not exist")
+
+
+
+def partial(lst, query):
+    return [string for string in lst if query in string]
+
+
+
+    print(partial(data, dategoogle))
+
+
+
+    print(dategoogle + "  (F)")
+answer = []
+for strings in data:
+    if dategoogle + "  (F)" in strings:
+        answer.append(strings)
+    elif dategoogle + " (F)" in strings:
+        answer.append(strings)
+    elif dategoogle + " (D, F)" in strings:
+        answer.append(strings)
