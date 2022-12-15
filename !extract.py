@@ -49,7 +49,9 @@ answer = [strings for strings in data if dategoogle + "  (F)" in strings or date
 homeworkIndex = data.index(answer[0]) + 2
 print(data[homeworkIndex])
 
-
+with open('HOMEWORK.TXT', 'w') as f:
+    f.write(dategoogle + '\n')
+    f.write(data[homeworkIndex])
 
 
 #data is already formatted as a Python list
