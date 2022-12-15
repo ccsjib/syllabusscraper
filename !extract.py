@@ -41,7 +41,7 @@ with open("psychsyllabus.json", "r") as f:
 #is simplified to
 
 
-answer = [strings for strings in data if dategoogle + "  (F)" in strings or dategoogle + " (F)" in strings or dategoogle + " (D, F)" in strings]
+answer = [strings for strings in data if dategoogle + "  (F)" in strings or dategoogle + " (F)" in strings or dategoogle + " (D, F)" in strings or dategoogle + "  (B, D, F)" in strings or dategoogle + " \n(B, D, F)" in strings]
 
 #ans = [x for x in answer if dategoogle and "F" in x]
 
