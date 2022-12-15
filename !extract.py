@@ -3,11 +3,13 @@ import json
 import re
 from datetime import date
 
+#gets date using datetime (already part of Python)
 today = date.today()
 
 day = today.strftime("%#d")
 dayNum = int(day)
 
+#Adds suffix to the date since AP Psych's syllabus has them. Makes sure string finding using matching works later.
 suffix = ""
 if 4 <= dayNum <= 20 or 24 <= dayNum <= 30:
     suffix = "th"
@@ -15,9 +17,14 @@ else:
     suffix = ["st", "nd", "rd"][dayNum % 10 - 1]
 
 #https://www.tutorialspoint.com/How-do-I-display-the-date-like-Aug-5th-using-python-s-strftime#:~:text=It%20is%20not%20possible%20to,directive%20that%20supports%20this%20formatting.
+
+
+#Date which will be used to match syllabus JSON.
 dategoogle = today.strftime("%b %#d" + suffix)
 
 
+
+#Open JSON file which has syllabus pulled from Google Docs API converted into a Python list (one string for each cell)
 with open("psychsyllabus.json", "r") as f:
     data = json.load(f)
 #https://linuxhint.com/search_json_python/ 
@@ -40,7 +47,7 @@ with open("psychsyllabus.json", "r") as f:
 
 #is simplified to
 
-
+#find any strings matching the date + all the different ways the teacher might have written F Block (I hope to find a better way to do this in my next version)
 answer = [strings for strings in data if dategoogle + "  (F)" in strings or dategoogle + " (F)" in strings or dategoogle + " (D, F)" in strings or dategoogle + "  (B, D, F)" in strings or dategoogle + " \n(B, D, F)" in strings]
 
 #ans = [x for x in answer if dategoogle and "F" in x]
@@ -49,6 +56,7 @@ answer = [strings for strings in data if dategoogle + "  (F)" in strings or date
 homeworkIndex = data.index(answer[0]) + 2
 print(data[homeworkIndex])
 
+#opens a text file and puts the homework for the current day in there.
 with open('HOMEWORK.TXT', 'w') as f:
     f.write(dategoogle + '\n')
     f.write(data[homeworkIndex])
