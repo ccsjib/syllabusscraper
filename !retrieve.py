@@ -1,16 +1,12 @@
-# Copyright 2019 Google LLC
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+#This is a modified version of Google's Docs API Python Quickstart code.
+#I hope to understand how this API works enough to simplify this code to do only what I need, but for now it has a lot of extra code left over from the template.
+
+'''
+also I just realized this code has a workaround for multi-line comments in 
+Python 
+!
+:)
+'''
 
 """
 Recursively extracts the text from a Google Doc.
@@ -30,7 +26,7 @@ SCOPES = 'https://www.googleapis.com/auth/documents.readonly'
 DISCOVERY_DOC = 'https://docs.googleapis.com/$discovery/rest?version=v1'
 DOCUMENT_ID = '1w_8lomBg3ffwCD0Ooy0p2wJ4XY-9yDPvBuc0m27rPQY'
 
-
+#the comments surrounded by """ are from the original Google code. 
 def get_credentials():
     """Gets valid user credentials from storage.
 
@@ -67,6 +63,7 @@ def read_structural_elements(elements):
         Args:
             elements: a list of Structural Elements.
     """
+    #Here's where my modification starts. First, I made 2 empty vars. One string and one list. 
     text = ''
     lst = []
     for value in elements:
@@ -82,11 +79,16 @@ def read_structural_elements(elements):
                 cells = row.get('tableCells')
                 for cell in cells:
                     text += read_structural_elements(cell.get('content'))
+                    #I needed each cell turned into a string, so I tested with print() until I found that this code outputs strings. 
+                    #I appended these to the python list.
                     lst.append(read_structural_elements(cell.get('content')))
+                    #Opened the JSON file I made.
                     with open("psychsyllabus.json", "r") as f:
+                        #I'm pretty sure the below line does nothing, but in an effort to make sure the code doesn't break I am leaving it until my next version. 
                         data = json.load(f)
-#['syllabus']
+                        #Sets the data var to the Python list of cells turned into strings.
                         data = lst
+                    #Opens the JSON in write mode so it can dump the list to the JSON file. 
                     with open('psychsyllabus.json', 'w') as f:
                         json.dump(data, f, indent=2)
         elif 'tableOfContents' in value:

@@ -29,7 +29,7 @@ with open("psychsyllabus.json", "r") as f:
     data = json.load(f)
 #https://linuxhint.com/search_json_python/ 
 #print(data)
-#I just realized that the JSON is formatted as a Py list so I can just use the search function of that. https://www.freecodecamp.org/news/python-find-in-list-how-to-find-the-index-of-an-item-or-element-in-a-list/
+#(while coding) I just realized that the JSON is formatted as a Py list so I can just use the search function of that. https://www.freecodecamp.org/news/python-find-in-list-how-to-find-the-index-of-an-item-or-element-in-a-list/
 
 
 
@@ -45,7 +45,7 @@ with open("psychsyllabus.json", "r") as f:
 #        answer.append(strings)
 #print(answer)
 
-#is simplified to
+#is simplified to (answer var below)
 
 #find any strings matching the date + all the different ways the teacher might have written F Block (I hope to find a better way to do this in my next version)
 answer = [strings for strings in data if dategoogle + "  (F)" in strings or dategoogle + " (F)" in strings or dategoogle + " (D, F)" in strings or dategoogle + "  (B, D, F)" in strings or dategoogle + " \n(B, D, F)" in strings]
@@ -62,11 +62,4 @@ with open('HOMEWORK.TXT', 'w') as f:
     f.write(data[homeworkIndex])
 
 
-#data is already formatted as a Python list
 
-#for value in jsondata:
-    #if (jsondata[value] == dategoogle):
-       # print("foundljkfhejrsltkfjhe")
-    #else:
-       # print("big fail")
-        
