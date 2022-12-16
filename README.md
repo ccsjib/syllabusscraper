@@ -27,8 +27,8 @@ In !extract.py, which I made from scratch, the code:
 
 HOMEWORK.txt is accessed by Rainmeter using a piece of a Raimeter widget (skin) I found online which reads a .txt since Rainmeter alone can't do this. I wanted to connect this to the dock, but unfortunately with the time constraints I did not think this was doable. Instead, I decided to learn very basic Rainmeter scripting and got some draggable text to display on my desktop!
 
-Overall I'm really happy with this project. I wish I was able to do more in the time given, but it is a functional syllabus scraper! For my next version, I will be focusing on:
+Overall, I'm really happy with this project. I wish I was able to do more in the time given, but it is a functional syllabus scraper! For my next version, I will be focusing on:
 - the other syllabi
-- dock integation
-- code clean-up 
+- dock integration
+- code clean-up/simplification 
 
