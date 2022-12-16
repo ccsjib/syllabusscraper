@@ -1,7 +1,7 @@
 # syllabusscraper
 
 
-So, back in Freshman year I wanted my computer desktop to be cooler and I found this program called Rainmeter. It allows you to put various customized and interactive widgets on your desktop. It has its own scripting language, but as a beginner I downloaded others' published widgets to get the look I wanted. Eventually, I stumbled upon an interactive dock (https://www.deviantart.com/not-finch/art/Interactive-Dock-for-Rainmeter-772713805) which lets you open programs. I had gotten more comfortable with Rainmeter so I was able to understand how this widget worked. I changed the animation speed and orientation along with connecting each button to my class documents folders and giving them icons. 
+So, back in Freshman year I wanted my computer desktop to be cooler and I found this program called Rainmeter. It allows you to put various customized and interactive widgets on your desktop. It has its own scripting language, but as a beginner I downloaded others' published widgets to get the look I wanted. Eventually, I stumbled upon an interactive dock ([Interactive Dock](https://www.deviantart.com/not-finch/art/Interactive-Dock-for-Rainmeter-772713805)) which lets you open programs. I had gotten more comfortable with Rainmeter so I was able to understand how this widget worked. I changed the animation speed and orientation along with connecting each button to my class documents folders and giving them icons. 
 
 ![raimeter dock](https://github.com/ccsjib/syllabusscraper/blob/main/RainmeterDock.png)
 
@@ -32,5 +32,3 @@ Overall I'm really happy with this project. I wish I was able to do more in the 
 - dock integation
 - code clean-up 
 
-
-https://www.deviantart.com/not-finch/art/Interactive-Dock-for-Rainmeter-772713805
