@@ -102,6 +102,7 @@ def read_structural_elements(elements):
 def main():
     """Uses the Docs API to print out the text of a document."""
     credentials = get_credentials()
+    print(credentials)
     http = credentials.authorize(Http())
     docs_service = discovery.build(
         'docs', 'v1', http=http, discoveryServiceUrl=DISCOVERY_DOC)
