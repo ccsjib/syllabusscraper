@@ -48,7 +48,7 @@ with open("psychsyllabus.json", "r") as f:
 #is simplified to (answer var below)
 
 #find any strings matching the date + all the different ways the teacher might have written F Block (I hope to find a better way to do this in my next version)
-answer = [strings for strings in data if dategoogle + "  (F)" in strings or dategoogle + " (F)" in strings or dategoogle + " (D, F)" in strings or dategoogle + "  (B, D, F)" in strings or dategoogle + " \n(B, D, F)" in strings]
+answer = [strings for strings in data if dategoogle + "  (F)" in strings or dategoogle + " (F)" in strings or dategoogle + " (D, F)" in strings or dategoogle + "  (B, D, F)" in strings or dategoogle + " \n(B, D, F)" in strings or dategoogle + " (B, D)" in strings]
 
 #ans = [x for x in answer if dategoogle and "F" in x]
 

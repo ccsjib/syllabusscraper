@@ -24,7 +24,7 @@ import re
 
 SCOPES = 'https://www.googleapis.com/auth/documents.readonly'
 DISCOVERY_DOC = 'https://docs.googleapis.com/$discovery/rest?version=v1'
-DOCUMENT_ID = '1w_8lomBg3ffwCD0Ooy0p2wJ4XY-9yDPvBuc0m27rPQY'
+DOCUMENT_ID = '1MWA0YQjvkMV7MiMHet_eddj7cXRPnKXVpO3Nc0Wckx4'
 
 #the comments surrounded by """ are from the original Google code. 
 def get_credentials():
