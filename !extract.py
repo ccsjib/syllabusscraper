@@ -13,6 +13,7 @@ while weekNum >= 5:
     day -= timedelta(days=1)
     weekNum -= 1
 
+#get the day number out of the month (used to find correct suffix)
 dayNum = int(day.strftime("%#d"))
 
 
