@@ -1,13 +1,22 @@
 import os
 import json
 import re
-from datetime import date
+from datetime import date, timedelta
 
-#gets date using datetime (already part of Python)
-today = date.today()
+#gets date using date library 
+day = date.today()
+#finds day of week. 5 and 6 are Sat and Sun, so need to backtrack a day or two when it's the weekend.
+weekNum = day.weekday()
 
-day = today.strftime("%#d")
-dayNum = int(day)
+#if it's the weekend (5 or 6), subract until it's the last weekday (4)
+while weekNum >= 5:
+    day -= timedelta(days=1)
+    weekNum -= 1
+
+dayNum = int(day.strftime("%#d"))
+
+
+
 
 #Adds suffix to the date since AP Psych's syllabus has them. Makes sure string finding using matching works later.
 suffix = ""
@@ -20,9 +29,7 @@ else:
 
 
 #Date which will be used to match syllabus JSON.
-dategoogle = today.strftime("%b %#d" + suffix)
-
-
+dateGoogle = day.strftime("%b %#d" + suffix)
 
 #Open JSON file which has syllabus pulled from Google Docs API converted into a Python list (one string for each cell)
 with open("psychsyllabus.json", "r") as f:
@@ -41,16 +48,16 @@ with open("psychsyllabus.json", "r") as f:
 #this code
 #answer = []
 #for strings in data:
-#    if dategoogle + "  (F)" in strings or dategoogle + " (F)" in strings or dategoogle + " (D, F)" in strings:
+#    if dateGoogle + "  (F)" in strings or dateGoogle + " (F)" in strings or dateGoogle + " (D, F)" in strings:
 #        answer.append(strings)
 #print(answer)
 
 #is simplified to (answer var below)
 
 #find any strings matching the date + all the different ways the teacher might have written F Block (I hope to find a better way to do this in my next version)
-answer = [strings for strings in data if dategoogle + "  (F)" in strings or dategoogle + " (F)" in strings or dategoogle + " (D, F)" in strings or dategoogle + "  (B, D, F)" in strings or dategoogle + " \n(B, D, F)" in strings or dategoogle + " (B, D)" in strings]
+answer = [strings for strings in data if dateGoogle + "  (F)" in strings or dateGoogle + " (F)" in strings or dateGoogle + " (D, F)" in strings or dateGoogle + "  (B, D, F)" in strings or dateGoogle + " \n(B, D, F)" in strings]
 
-#ans = [x for x in answer if dategoogle and "F" in x]
+#ans = [x for x in answer if dateGoogle and "F" in x]
 
 #Finds what position my answer is in the list. Since homework is 2 strings past the date in the list, add 2
 homeworkIndex = data.index(answer[0]) + 2
@@ -58,7 +65,7 @@ print(data[homeworkIndex])
 
 #opens a text file and puts the homework for the current day in there.
 with open('HOMEWORK.TXT', 'w') as f:
-    f.write(dategoogle + '\n')
+    f.write(dateGoogle + '\n')
     f.write(data[homeworkIndex])
 
 
